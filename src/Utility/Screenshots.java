@@ -16,26 +16,25 @@ import org.openqa.selenium.TakesScreenshot;
 public class Screenshots {
 	public static void takeSnapShot(WebDriver driver) throws Exception{
             
-	      DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy h-m-s");
-	        Date date = new Date();
-	        
-	      //Convert web driver object to TakeScreenshot
+	  DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy h-m-s");
+	    Date date = new Date();
+	    
+	  //Convert web driver object to TakeScreenshot
+	
+	  TakesScreenshot scrShot =((TakesScreenshot)driver);
+	
+	  //Call getScreenshotAs method to create image file
+	
+	      File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+	
+	  //Move image file to new destination
+	  String filename = "Error"; 
+	
+	  File DestFile = new File("C:\\Test\\YDF\\Screenshots"+filename+"-"+dateFormat.format(date)+".png");
 
-	      TakesScreenshot scrShot =((TakesScreenshot)driver);
-
-	      //Call getScreenshotAs method to create image file
-
-	              File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-	          //Move image file to new destination
-	              String filename="Error";
-	              
-
-	              File DestFile=new File("C:\\Test\\YDF\\Screenshots"+filename+"-"+dateFormat.format(date)+".png");
-
-	              //Copy file at destination
-
-	              FileUtils.copyFile(SrcFile, DestFile);
+	  //Copy file at destination
+	
+	  FileUtils.copyFile(SrcFile, DestFile);
 
 	  }
 
